@@ -6,8 +6,7 @@
       </button>
     </div>
     <div class="add-task__input" v-if="edit">
-      <input type="text" v-model="task.content" @keyup.enter="addTask" placeholder="Type your task" />
-      <p class="add-task__input--error"></p>
+      <input :class="{'has-error' : error}" type="text" v-model="task.content" @keyup.enter="addTask" placeholder="Type your task" />
     </div>
   </div>
 </template>
@@ -22,16 +21,23 @@ export default {
       status: false,
     },
     edit: false,
-    autoID: 3
+    autoID: 3,
+    error: false
   }),
   methods: {
     toggleEdit() {
       this.edit =! this.edit;
+      this.error = false;
     },
     addTask() {
-      this.$emit('addTask', { ...this.task, id: this.autoID });
-      this.task.content = '';
-      this.autoID++;
+      if (this.task.content.length > 0) {
+        this.$emit('addTask', { ...this.task, id: this.autoID });
+        this.task.content = '';
+        this.autoID++;
+        this.error = false;
+      } else {
+        this.error = true;
+      }
     }
   },
 }

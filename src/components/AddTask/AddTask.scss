@@ -29,6 +29,9 @@
       &:focus {
         outline-color: $primary;
       }
+      &.has-error {
+        border-color: $primary;
+      }
     }
   }
   &__btn {
