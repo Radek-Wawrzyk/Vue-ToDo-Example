@@ -21,15 +21,9 @@ export default {
       date: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
       status: false,
     },
-    edit: false
+    edit: false,
+    autoID: 3
   }),
-  computed: {
-    autoID() {
-      let id = 2;
-      id++;
-      return id;
-    },
-  },
   methods: {
     toggleEdit() {
       this.edit =! this.edit;
@@ -37,6 +31,7 @@ export default {
     addTask() {
       this.$emit('addTask', { ...this.task, id: this.autoID });
       this.task.content = '';
+      this.autoID++;
     }
   },
 }
