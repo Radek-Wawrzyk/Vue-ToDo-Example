@@ -6,6 +6,9 @@
   position: relative;
   border-left: 3px solid transparent;
   transition: 0.25s border, background 0.25s;
+  &:last-child {
+    border-bottom: none;
+  }
   &:hover {
     border-left-color: $primary;
     border-bottom-color: lighten($primary, 26%);

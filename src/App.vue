@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <section class="task">
-      <ul class="tasks">
+    <section class="todo">
+      <header class="todo__header">
+        <h1 class="todo__header--title">Thursday, 10th</h1>
+        <h2 class="todo__header--counter">{{counter}}</h2>
+      </header>
+      <add-task @addTask="addTask($event)" />
+      <ul class="todo__list">
         <task v-for="task in tasks" :key="task.id" :task="task" @deleteTask="deleteTask($event)" @changeStatus="changeStatus($event)" />
       </ul>
     </section>
@@ -11,11 +16,13 @@
 <script>
 
 import Task from './components/Task/Task.vue';
+import AddTask from './components/AddTask/AddTask.vue';
 
 export default {
   name: 'app',
   components: {
-    Task
+    Task,
+    AddTask
   },
   data: () => ({
     tasks: [
@@ -33,7 +40,15 @@ export default {
       }
     ]
   }),
+  computed: {
+    counter() {
+      return this.tasks.length > 0 ? `${this.tasks.length} Tasks` : ``;
+    }
+  },
   methods: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
     deleteTask(id) {
       this.tasks = this.tasks.filter(task => task.id !== id);
     },
