@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'addTask',
   data: () => ({
@@ -40,7 +41,8 @@ export default {
       }
     }
   },
-}
+};
+
 </script>
 
 <style scoped src="./AddTask.scss" lang="scss" />

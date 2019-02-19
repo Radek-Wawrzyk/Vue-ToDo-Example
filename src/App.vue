@@ -2,9 +2,10 @@
   <div id="app">
     <section class="todo">
       <header class="todo__header">
-        <h1 class="todo__header--title">Thursday, 10th</h1>
+        <h1 class="todo__header--title">{{ new Date() | moment("dddd do") }}</h1>
         <h2 class="todo__header--counter">{{counter}}</h2>
-        <span class="todo__header--subtitle">December</span>
+        <span class="todo__header--subtitle">{{ new Date() | moment("MMMM") }}</span>
+        <span></span>
       </header>
       <add-task @addTask="addTask($event)" />
       <ul class="todo__list">
