@@ -27,3 +27,11 @@
     }
   }
 }
+
+//Media
+
+@media screen and (max-width: 540px) {
+  .todo {
+    width: 96%;
+  }
+}
