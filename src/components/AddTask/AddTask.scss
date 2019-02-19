@@ -17,12 +17,21 @@
     }
   }
   &__input {
+    position: relative;
     padding: 15px 25px;
+    transition: all 0.25s;
+    max-height: 0;
+    overflow: hidden;
+    &--active {
+      max-height: 120px;
+      transition: max-height 0.5s;
+    }
     input {
       border: 1px solid lighten($textColor, 35%);
+      margin: 15px 25px 0 25px;
       padding: 8px 12px;
       border-radius: 6px;
-      width: 100%;
+      width: calc(100% - 50px);
       &::-webkit-input-placeholder { 
         color:lighten($textColor, 20%); 
       }
