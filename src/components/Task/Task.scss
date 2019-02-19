@@ -1,0 +1,111 @@
+.task {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid $borderColor;
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: 0.25s border, background 0.25s;
+  &:hover {
+    border-left-color: $primary;
+    border-bottom-color: lighten($primary, 26%);
+    background: lighten($primary, 26%);
+    > .task__delete-btn {
+      opacity: 1;
+      visibility: visible
+    }
+  }
+  &__checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $textColor;
+    color: $textColor;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    transition: border 0.25s, background 0.25s;
+    background: white;
+    padding: 0;
+    margin: 0;
+    &--done {
+      background: $primary;
+      color: white;
+      border-color: $primary;
+    }
+    &:hover, &:focus {
+      cursor: pointer;
+      outline-color: $primary;
+    }
+    svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: currentColor;
+        transition: all 0.25s;
+      }
+    }
+  }
+  &__content {
+    color: $textColor;
+    padding: 0 15px;
+    width: 100%;
+    &--done {
+      text-decoration: line-through;
+      color: lighten($textColor, 27%)
+    }
+  }
+  &__date {
+    color: $textColor;
+    font-size: 12px;
+    &--done {
+      color: lighten($textColor, 27%)
+    }
+  }
+  &__delete-btn {
+    opacity: 0;
+    visibility: hidden;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 0;
+    border-radius: 30px;
+    background: $primary;
+    border: 1px solid $primary;
+    color: white;
+    transition: 0.25s background, opacity 0.25s, visiblity 0.25s;
+    margin: 0 0 0 15px;
+    &:hover, &:focus {
+      cursor: pointer;
+      color: $primary;
+      background: white;
+      border-color: $primary;
+      outline-color: $primary;
+    }
+    svg {
+      width: 17px;
+      height: 17px;
+      path {
+        fill: currentColor;
+        transition: all 0.25s;
+      }
+    }
+  }
+}
+
+//Media
+
+@media screen and (max-width: 476px) {
+  .task {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    &__content {
+      width: calc(100% - 20px);
+    }
+    &__date {
+      margin: 10px 0 0 35px;
+    }
+  }
+}
